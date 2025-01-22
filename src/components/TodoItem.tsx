@@ -1,21 +1,19 @@
-import { ListItem, ListItemText, Divider, Checkbox } from "@mui/material";
-import { TodoProps } from "../types.tsx";
-import {TodoStatus} from "../types.tsx";
+import { ListItem, ListItemText, Divider, Checkbox } from "@mui/material"
+import { TodoProps, TodoStatus} from "../types.tsx"
 
 interface TodoItemProps {
-    val: TodoProps[],
+    value: TodoProps[],
     onToggle: (id:string) => void,
     status: TodoStatus
 }
 
+const TodoItem = ({ value, onToggle, status }: TodoItemProps) => {
 
-const TodoItem = ({ val, onToggle, status }: TodoItemProps) => {
 
-
-    const filteredTodos = val.filter((item) => {
+    const filteredTodos = value.filter((item) => {
         switch (status) {
-            case 'active': return !item.completed;
-            case 'completed': return item.completed;
+            case 'active': return !item.completed
+            case 'completed': return item.completed
             default: return true
         }
     })
@@ -23,7 +21,6 @@ const TodoItem = ({ val, onToggle, status }: TodoItemProps) => {
 
     return (
         <>
-
             {
                 filteredTodos.map((item) => (
 

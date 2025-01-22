@@ -1,9 +1,9 @@
-import {Box, Button, ButtonGroup, Container, Divider, List, ListItem, TextField, Typography} from "@mui/material";
-import {useState} from "react";
-import TodoItem from "./TodoItem.tsx";
-import {TodoProps} from "../types.tsx";
-import {TodoStatus} from "../types.tsx";
-import { v4 as uuidv4 } from "uuid";
+import {Box, Button, ButtonGroup,
+    Container, Divider, List, ListItem, TextField, Typography} from "@mui/material"
+import {useState} from "react"
+import TodoItem from "./TodoItem.tsx"
+import {TodoProps, TodoStatus} from "../types.tsx"
+import { v4 as uuidv4 } from "uuid"
 
 
 
@@ -11,8 +11,8 @@ import { v4 as uuidv4 } from "uuid";
 const TodoWrapper = () => {
 
     const [task, setTask] = useState('')
-    const [todo, setTodo] = useState<TodoProps[]>([])
-    const [selectedButton, setSelectedButton] = useState<TodoStatus>('all');
+    const [todos, setTodos] = useState<TodoProps[]>([])
+    const [selectedStatusButton, setSelectedStatusButton] = useState<TodoStatus>('all')
 
 
     const ListStyle = {
@@ -23,7 +23,7 @@ const TodoWrapper = () => {
 
     const handleKeyDown = (e: { key: string; }) => {
         if (e.key === 'Enter' && task.trim() !== '') {
-            setTodo(prev =>[
+            setTodos(prev => [
                 ...prev,
                 {id: uuidv4(), completed: false, taskName: task,}
             ])
@@ -32,14 +32,14 @@ const TodoWrapper = () => {
     }
 
     const handleToggle = (id: string) => {
-        setTodo((prev) =>
+        setTodos((prev) =>
             prev.map((item) =>
-                item.id === id ? { ...item, completed: !item.completed,} : item
+                item.id === id ? {...item, completed: !item.completed} : item
             )
         )
     }
 
-    const isSelected = (status: TodoStatus) => selectedButton === status ? 'contained' : 'text';
+    const isSelected = (status: TodoStatus) => selectedStatusButton === status ? 'contained' : 'text';
 
 
     return (
@@ -51,6 +51,7 @@ const TodoWrapper = () => {
                 </Typography>
 
                 <List sx={ListStyle} id = {'todo_list'}>
+
                     <ListItem >
                         <TextField
                             id= 'task_input'
@@ -62,17 +63,16 @@ const TodoWrapper = () => {
                             sx={{border:'white'}}
                             variant='standard'
                         />
-
                     </ListItem>
 
                     <Divider component={'li'} />
-                    <TodoItem val={todo} onToggle={handleToggle} status = {selectedButton}/>
+                    <TodoItem value={todos} onToggle={handleToggle} status = {selectedStatusButton}/>
 
                     <Box component="li" sx={{textAlign: "center"}}>
 
                         <ButtonGroup variant="text" sx = {{m:2}} id={'button_group'}>
                             <Button
-                                onClick={() => setSelectedButton('all')}
+                                onClick={() => setSelectedStatusButton('all')}
                                 variant={isSelected('all')}
                                 id = {'all_button'}
                             >
@@ -80,7 +80,7 @@ const TodoWrapper = () => {
                             </Button>
 
                             <Button
-                                onClick={() => setSelectedButton('active')}
+                                onClick={() => setSelectedStatusButton('active')}
                                 variant={isSelected('active')}
                                 id = {'active_button'}
                             >
@@ -88,7 +88,7 @@ const TodoWrapper = () => {
                             </Button>
 
                             <Button
-                                onClick={() => setSelectedButton('completed')}
+                                onClick={() => setSelectedStatusButton('completed')}
                                 variant={isSelected('completed')}
                                 id = {'completed_button'}
                             >
