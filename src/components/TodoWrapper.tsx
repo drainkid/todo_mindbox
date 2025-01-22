@@ -41,6 +41,10 @@ const TodoWrapper = () => {
 
     const isSelected = (status: TodoStatus) => selectedStatusButton === status ? 'contained' : 'text';
 
+    const todosLeft = todos.filter((item) => !item.completed)
+
+
+
 
     return (
         <div>
@@ -50,31 +54,50 @@ const TodoWrapper = () => {
                     todos
                 </Typography>
 
-                <List sx={ListStyle} id = {'todo_list'}>
+                <List sx={ListStyle} id={'todo_list'}>
 
-                    <ListItem >
+                    <ListItem>
                         <TextField
-                            id= 'task_input'
+                            id='task_input'
                             fullWidth
-                            label= 'What needs to be done?'
+                            label='What needs to be done?'
                             value={task}
                             onChange={e => setTask(e.target.value)}
                             onKeyDown={handleKeyDown}
-                            sx={{border:'white'}}
+                            sx={{border: 'white'}}
                             variant='standard'
                         />
                     </ListItem>
+                    <Divider component={'li'}/>
 
-                    <Divider component={'li'} />
-                    <TodoItem value={todos} onToggle={handleToggle} status = {selectedStatusButton}/>
+                    <TodoItem value={todos} onToggle={handleToggle} status={selectedStatusButton}/>
 
-                    <Box component="li" sx={{textAlign: "center"}}>
+                    <Box
+                        component="li"
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            m: 2
+                        }}
+                    >
+                            <Typography component={'h6'}>
+                                {todosLeft.length} items left
+                            </Typography>
 
-                        <ButtonGroup variant="text" sx = {{m:2}} id={'button_group'}>
+                        <ButtonGroup
+                            variant="text"
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                flexGrow: 1,
+                            }}
+                            id={'button_group'}
+                        >
                             <Button
                                 onClick={() => setSelectedStatusButton('all')}
                                 variant={isSelected('all')}
-                                id = {'all_button'}
+                                id={'all_button'}
                             >
                                 All
                             </Button>
@@ -82,7 +105,7 @@ const TodoWrapper = () => {
                             <Button
                                 onClick={() => setSelectedStatusButton('active')}
                                 variant={isSelected('active')}
-                                id = {'active_button'}
+                                id={'active_button'}
                             >
                                 Active
                             </Button>
@@ -90,13 +113,11 @@ const TodoWrapper = () => {
                             <Button
                                 onClick={() => setSelectedStatusButton('completed')}
                                 variant={isSelected('completed')}
-                                id = {'completed_button'}
+                                id={'completed_button'}
                             >
                                 Completed
                             </Button>
-
                         </ButtonGroup>
-
                     </Box>
 
                 </List>
