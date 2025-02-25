@@ -1,5 +1,5 @@
 import { TodoProps, TodoStatus } from "../shared/types.tsx";
-import {TodoList} from '../shared/ui';
+import {TodoItem} from '../shared/ui';
 
 interface TodoItemProps {
     value: TodoProps[];
@@ -23,7 +23,7 @@ const FilteredTasks = ({ value, onToggle, status }: TodoItemProps) => {
     return (
         <>
             {filteredTodos.map((item) => (
-                <TodoList
+                <TodoItem
                     key={item.id}
                     taskName={item.taskName}
                     completed={item.completed}

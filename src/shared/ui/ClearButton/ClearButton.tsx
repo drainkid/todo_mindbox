@@ -1,22 +1,26 @@
 import {Button} from "@mui/material";
-import {TodoProps} from "../../types.tsx";
-import {FC} from "react";
+import {FC, ReactNode} from "react";
 
 
 
 interface ClearButtonProps {
-    value: string;
-    onClear: (todos:TodoProps) => void
+    onClear: () => void
+    children?: ReactNode;
+
 }
 
-export const ClearButton:FC<ClearButtonProps> = ({value, onClear}) => {
+export const ClearButton:FC<ClearButtonProps> = ({children, onClear}) => {
 
+    const handleClick = () => {
+        onClear(); // Вызываем переданный обработчик
+    }
+    
     return (
-        <div>
-            <Button onClick={() => onClear}>
-                {value}
+            <Button
+                onClick={handleClick}
+            >
+                {children}
             </Button>
-        </div>
     );
 };
 

@@ -1,4 +1,4 @@
-import {ListItem, TextField} from "@mui/material";
+import {Divider, ListItem, TextField} from "@mui/material";
 import React, {FC} from "react";
 
 interface TodosFieldProps {
@@ -9,6 +9,7 @@ interface TodosFieldProps {
 
 export const TodosField:FC<TodosFieldProps> = ({task, setTask, handleKeyDown}) => {
     return (
+        <>
         <ListItem>
             <TextField
                 id='task_input'
@@ -21,6 +22,9 @@ export const TodosField:FC<TodosFieldProps> = ({task, setTask, handleKeyDown}) =
                 variant='standard'
             />
         </ListItem>
+            <Divider component="li" />
+        </>
+
     );
 };
 

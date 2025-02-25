@@ -6,7 +6,7 @@ interface TodoListProps {
     onToggle: () => void
 }
 
-export const TodoList = ({ taskName, completed, onToggle }: TodoListProps) => {
+export const TodoItem = ({ taskName, completed, onToggle }: TodoListProps) => {
     return (
         <>
             <ListItem

@@ -15,7 +15,7 @@ describe('Todo app', () => {
 
     // Проверяем, что задача появилась в списке
     cy.get('#todo_list').should('contain', newTask)
-  });
+  })
 
   it('should toggle task completion', () => {
     const newTask = 'Test task'
@@ -32,7 +32,7 @@ describe('Todo app', () => {
 
     // Проверяем, что задача теперь завершена
     cy.get('input[type="checkbox"]').first().should('be.checked')
-  });
+  })
 
   it('should filter tasks by "All"', () => {
     const task1 = 'Task 1'
@@ -51,7 +51,7 @@ describe('Todo app', () => {
     cy.get('#todo_list')
         .should('contain', task1)
         .and('contain', task2)
-  });
+  })
 
   it('should filter tasks by "Active"', () => {
     const task1 = 'Task 1'
@@ -95,5 +95,26 @@ describe('Todo app', () => {
     cy.get('#todo_list')
         .should('contain', task1)
         .and('not.contain', task2)
+  })
+
+  it('should clear completed tasks', () => {
+    const task1 = 'Task 1'
+    const task2 = 'Task 2'
+
+    cy.get('#task_input').type(task1)
+    cy.get('#task_input').type('{enter}')
+    cy.get('#task_input').type(task2)
+    cy.get('#task_input').type('{enter}')
+
+    cy.get('.MuiCheckbox-root').first().click()
+
+    cy.contains('clear completed').click();
+
+    // Проверяем, что завершенная задача удалена
+    cy.get('#todo_list')
+        .should('not.contain', task1) // Завершенная задача удалена
+        .and('contain', task2); // Незавершенная задача осталась
+
+
   })
 })

@@ -1,5 +1,5 @@
 export {FilterButtons} from './FilterButtons';
-export {TodoList} from './TodoList';
+export {TodoItem} from './TodoItem';
 export {TodoAlert} from './TodoAlert';
 export {ClearButton} from './ClearButton';
 export {TodosField} from './TodosField';

@@ -1,7 +1,6 @@
 import {
     Box,
     Container,
-    Divider,
     List,
     Typography
 } from "@mui/material"
@@ -54,13 +53,10 @@ const TodoWrapper = () => {
     const todosLeft = todos.filter((item) => !item.completed)
 
     const clearCompletedTasks = () => {
-
         setTodos(prev => prev.filter((item) => !item.completed))
-
     }
 
     return (
-        <div>
             <Container>
                 <Typography variant="h1" sx={{textAlign:'center'}}>
                     todos
@@ -84,7 +80,6 @@ const TodoWrapper = () => {
                       id={'todo_list'}
                 >
                     <TodosField task={task} setTask={setTask} handleKeyDown={handleKeyDown} />
-                    <Divider component={'li'}/>
                     <FilteredTasks value={todos} onToggle={handleToggle} status={selectedStatusButton}/>
                     <Box
                         component="li"
@@ -100,11 +95,14 @@ const TodoWrapper = () => {
                             {todosLeft.length} items left
                         </Typography>
                         <FilterButtons selectedStatus={selectedStatusButton} onStatusChange={setSelectedStatusButton}/>
-                        <ClearButton onClear={clearCompletedTasks} value={'clear completed'}/>
+                        <ClearButton
+                            onClear={clearCompletedTasks}
+                        >
+                            clear completed
+                        </ClearButton>
                     </Box>
                 </List>
             </Container>
-        </div>
     )
 };
 
