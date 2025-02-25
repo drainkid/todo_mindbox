@@ -2,9 +2,9 @@ import {Divider, ListItem, TextField} from "@mui/material";
 import React, {FC} from "react";
 
 interface TodosFieldProps {
-    task: string; // Текущее значение текстового поля
-    setTask: (value: string) => void; // Функция для обновления значения
-    handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void; // Обработчик нажатия клавиши
+    task: string
+    setTask: (value: string) => void
+    handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void
 }
 
 export const TodosField:FC<TodosFieldProps> = ({task, setTask, handleKeyDown}) => {

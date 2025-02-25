@@ -18,6 +18,7 @@ export const ClearButton:FC<ClearButtonProps> = ({children, onClear}) => {
     return (
             <Button
                 onClick={handleClick}
+                size={'small'}
             >
                 {children}
             </Button>

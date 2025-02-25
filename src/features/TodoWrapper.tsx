@@ -41,15 +41,6 @@ const TodoWrapper = () => {
         }
     }
 
-
-    const handleToggle = (id: string) => {
-        setTodos((prev) =>
-            prev.map((item) =>
-                item.id === id ? {...item, completed: !item.completed} : item
-            )
-        )
-    }
-
     const todosLeft = todos.filter((item) => !item.completed)
 
     const clearCompletedTasks = () => {
@@ -80,7 +71,7 @@ const TodoWrapper = () => {
                       id={'todo_list'}
                 >
                     <TodosField task={task} setTask={setTask} handleKeyDown={handleKeyDown} />
-                    <FilteredTasks value={todos} onToggle={handleToggle} status={selectedStatusButton}/>
+                    <FilteredTasks value={todos} setTodos={setTodos} status={selectedStatusButton}/>
                     <Box
                         component="li"
                         sx={{

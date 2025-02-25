@@ -33,6 +33,7 @@ export const FilterButtons = ({ selectedStatus, onStatusChange }: FilterButtonsP
                 }}
                 id={'button_group'}
                 onClick={handleStatusButton}
+                size={'small'}
             >
                 <Button
                     variant={isSelected('all')}

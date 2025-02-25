@@ -3,11 +3,11 @@ import {TodoItem} from '../shared/ui';
 
 interface TodoItemProps {
     value: TodoProps[];
-    onToggle: (id: string) => void;
     status: TodoStatus;
+    setTodos: (value: (prev: TodoProps[]) => TodoProps[]) => void;
 }
 
-const FilteredTasks = ({ value, onToggle, status }: TodoItemProps) => {
+const FilteredTasks = ({ value, status, setTodos }: TodoItemProps) => {
 
     const filteredTodos = value.filter((item) => {
         switch (status) {
@@ -20,6 +20,14 @@ const FilteredTasks = ({ value, onToggle, status }: TodoItemProps) => {
         }
     })
 
+    const handleToggle = (id: string) => {
+        setTodos((prev) =>
+            prev.map((item) =>
+                item.id === id ? {...item, completed: !item.completed} : item
+            )
+        )
+    }
+
     return (
         <>
             {filteredTodos.map((item) => (
@@ -27,7 +35,7 @@ const FilteredTasks = ({ value, onToggle, status }: TodoItemProps) => {
                     key={item.id}
                     taskName={item.taskName}
                     completed={item.completed}
-                    onToggle={() => onToggle(item.id)}
+                    onToggle={() => handleToggle(item.id)}
                 />
             ))}
         </>
