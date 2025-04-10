@@ -36,7 +36,7 @@ npm run start
 
 ## Тесты
 
-Код покрыт e2e тестами, написанными на Cypress
+Код покрыт unit тестами, написанными на React testing library 
 
 Запуск тестов осуществляется командой:
 
@@ -44,9 +44,4 @@ npm run start
 npm run test
 ```
 
-Если нужна визуальная оболочка Cypress:
-
-Поменять в package.json
-
-"cypress": "cypress run" на "cypress": "cypress open"
 

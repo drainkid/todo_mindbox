@@ -1,5 +1,5 @@
-import { TodoProps, TodoStatus } from "../shared/types.tsx";
-import {TodoItem} from '../shared/ui';
+import { TodoProps, TodoStatus } from "../../shared/types.tsx";
+import {TodoItem} from '../../shared/ui';
 
 interface TodoItemProps {
     value: TodoProps[];
@@ -7,7 +7,7 @@ interface TodoItemProps {
     setTodos: (value: (prev: TodoProps[]) => TodoProps[]) => void;
 }
 
-const FilteredTasks = ({ value, status, setTodos }: TodoItemProps) => {
+export const FilteredTasks = ({ value, status, setTodos }: TodoItemProps) => {
 
     const filteredTodos = value.filter((item) => {
         switch (status) {

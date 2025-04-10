@@ -5,15 +5,15 @@ import {
     Typography
 } from "@mui/material"
 import {useEffect, useState} from "react"
-import FilteredTasks from "./FilteredTasks.tsx"
-import {TodoProps, TodoStatus} from "../shared/types.tsx"
-import {TodoAlert, FilterButtons, ClearButton, TodosField} from "../shared/ui"
-import {getUniqueId} from "../shared/lib/utils.ts"
+import FilteredTasks from "../FilteredTasks/FilteredTasks.tsx"
+import {TodoProps, TodoStatus} from "../../shared/types.tsx"
+import {TodoAlert, FilterButtons, ClearButton, TodosField} from "../../shared/ui"
+import {getUniqueId} from "../../shared/lib/utils.ts"
 
 
-const TodoWrapper = () => {
+export const TodoWrapper = () => {
 
-    const [task, setTask] = useState('')
+    const [task, setTask] = useState('') //таска в инпуте
     const [todos, setTodos] = useState<TodoProps[]>([])
     const [selectedStatusButton, setSelectedStatusButton] = useState<TodoStatus>('all')
     const [openAlert, setOpenAlert] = useState<boolean>(false)

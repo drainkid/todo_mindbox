@@ -1,11 +1,11 @@
-import React from 'react';
-import { Alert, Box, Grow, AlertColor } from '@mui/material';
+import React from 'react'
+import { Alert, Box, Grow, AlertColor } from '@mui/material'
 
 interface TodoAlertProps {
-    openAlert: boolean;
-    setOpenAlert: (value: boolean) => void;
-    message: string;
-    severity: AlertColor;
+    openAlert: boolean
+    setOpenAlert: (value: boolean) => void
+    message: string
+    severity: AlertColor
 }
 
 export const TodoAlert: React.FC<TodoAlertProps> = ({openAlert, setOpenAlert, message, severity}) => {
