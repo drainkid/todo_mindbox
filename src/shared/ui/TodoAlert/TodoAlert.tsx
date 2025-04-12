@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Alert, Box, Grow, AlertColor } from '@mui/material'
 
 interface TodoAlertProps {
@@ -9,6 +9,14 @@ interface TodoAlertProps {
 }
 
 export const TodoAlert: React.FC<TodoAlertProps> = ({openAlert, setOpenAlert, message, severity}) => {
+
+
+    useEffect(() => {
+        if (openAlert) {
+            const timer = setTimeout(() => setOpenAlert(false), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [openAlert])
 
     return (
         <div>

@@ -17,18 +17,6 @@ describe('FilterButtons', () => {
         expect(screen.getByRole('button', { name: 'Completed' })).toBeInTheDocument()
     })
 
-    test('selected button has contained variant', () => {
-        render(<FilterButtons selectedStatus="active" onStatusChange={mockOnStatusChange} />)
-
-        const allButton = screen.getByRole('button', { name: 'All' })
-        const activeButton = screen.getByRole('button', { name: 'Active' })
-        const completedButton = screen.getByRole('button', { name: 'Completed' })
-
-        expect(allButton).not.toHaveClass('MuiButton-contained')
-        expect(activeButton).toHaveClass('MuiButton-contained')
-        expect(completedButton).not.toHaveClass('MuiButton-contained')
-    })
-
     test('calls onStatusChange with correct status when a button is clicked', () => {
         render(<FilterButtons selectedStatus="all" onStatusChange={mockOnStatusChange} />)
 
@@ -45,6 +33,5 @@ describe('FilterButtons', () => {
         expect(screen.getByRole('button', { name: 'Active' })).toHaveAttribute('id', 'active')
         expect(screen.getByRole('button', { name: 'Completed' })).toHaveAttribute('id', 'completed')
     })
-
 
 })

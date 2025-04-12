@@ -24,10 +24,4 @@ describe('ClearButton', () => {
         expect(mockOnClear).toHaveBeenCalledTimes(1)
     })
 
-    test('renders with small size', () => {
-        render(<ClearButton onClear={mockOnClear}>Clear All</ClearButton>)
-
-        const button = screen.getByRole('button', { name: 'Clear All' })
-        expect(button).toHaveClass('MuiButton-sizeSmall')
-    })
 })

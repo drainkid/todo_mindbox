@@ -5,14 +5,14 @@ import {FC, ReactNode} from "react";
 
 interface ClearButtonProps {
     onClear: () => void
-    children?: ReactNode;
+    children?: ReactNode
 
 }
 
 export const ClearButton:FC<ClearButtonProps> = ({children, onClear}) => {
 
     const handleClick = () => {
-        onClear(); // Вызываем переданный обработчик
+        onClear()
     }
     
     return (

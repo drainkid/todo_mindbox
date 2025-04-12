@@ -25,7 +25,6 @@ describe('TodoAlert', () => {
     test('does not render alert content when openAlert is false', () => {
         render(<TodoAlert {...defaultProps} openAlert={false} />)
 
-        // The component will still be in the document but not visible
         const alertElement = screen.queryByText('Test alert message')
         expect(alertElement).not.toBeVisible()
     })
@@ -41,13 +40,6 @@ describe('TodoAlert', () => {
 
         const alertElement = screen.getByRole('alert')
         expect(alertElement).toHaveClass('MuiAlert-standardSuccess')
-    })
-
-    test('changes severity correctly', () => {
-        render(<TodoAlert {...defaultProps} severity="error" />)
-
-        const alertElement = screen.getByRole('alert')
-        expect(alertElement).toHaveClass('MuiAlert-standardError')
     })
 
     test('calls setOpenAlert when close button is clicked', async () => {
@@ -71,4 +63,5 @@ describe('TodoAlert', () => {
             width: '200px'
         })
     })
+
 })

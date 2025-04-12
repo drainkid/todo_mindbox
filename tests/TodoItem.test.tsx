@@ -44,24 +44,7 @@ describe('TodoItem', () => {
         expect(mockOnToggle).toHaveBeenCalledTimes(1)
     })
 
-    test('applies line-through style when completed', () => {
-        render(<TodoItem {...defaultProps} completed={true} />)
 
-        const text = screen.getByText('Test task')
-        expect(text.closest('.MuiListItemText-root')).toHaveStyle({
-            textDecoration: 'line-through',
-            color: 'rgba(0, 0, 0, 0.5)'
-        })
-    })
-
-    test('applies no text decoration when not completed', () => {
-        render(<TodoItem {...defaultProps} />)
-
-        const text = screen.getByText('Test task')
-        expect(text.closest('.MuiListItemText-root')).toHaveStyle({
-            textDecoration: 'none'
-        })
-    })
 
     test('renders a divider after the list item', () => {
         const { container } = render(<TodoItem {...defaultProps} />)

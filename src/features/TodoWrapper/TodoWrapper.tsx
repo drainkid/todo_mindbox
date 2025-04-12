@@ -4,7 +4,7 @@ import {
     List,
     Typography
 } from "@mui/material"
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import FilteredTasks from "../FilteredTasks/FilteredTasks.tsx"
 import {TodoProps, TodoStatus} from "../../shared/types.tsx"
 import {TodoAlert, FilterButtons, ClearButton, TodosField} from "../../shared/ui"
@@ -18,12 +18,6 @@ export const TodoWrapper = () => {
     const [selectedStatusButton, setSelectedStatusButton] = useState<TodoStatus>('all')
     const [openAlert, setOpenAlert] = useState<boolean>(false)
 
-    useEffect(() => {
-        if (openAlert) {
-            const timer = setTimeout(() => setOpenAlert(false), 3000);
-            return () => clearTimeout(timer);
-        }
-    }, [openAlert])
 
     const handleKeyDown = (e: { key: string }) => {
         if (e.key === 'Enter' && task.trim() !== '') {
@@ -71,7 +65,9 @@ export const TodoWrapper = () => {
                       id={'todo_list'}
                 >
                     <TodosField task={task} setTask={setTask} handleKeyDown={handleKeyDown} />
+
                     <FilteredTasks value={todos} setTodos={setTodos} status={selectedStatusButton}/>
+
                     <Box
                         component="li"
                         sx={{

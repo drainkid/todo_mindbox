@@ -4,13 +4,13 @@ import {TodoStatus} from "../../types.tsx";
 
 interface FilterButtonsProps {
     selectedStatus: TodoStatus
-    onStatusChange: (status: TodoStatus) => void;
+    onStatusChange: (status: TodoStatus) => void
 }
 
 export const FilterButtons = ({ selectedStatus, onStatusChange }: FilterButtonsProps) => {
 
     const isSelected = (status: TodoStatus) => {
-        return selectedStatus === status ? 'contained' : 'text';
+        return selectedStatus === status ? 'contained' : 'text'
     };
 
     const handleStatusButton = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -18,7 +18,7 @@ export const FilterButtons = ({ selectedStatus, onStatusChange }: FilterButtonsP
         const button = target.closest('button')
         if (button) {
             const status = button.id as TodoStatus
-            onStatusChange(status);
+            onStatusChange(status)
         }
     };
 
